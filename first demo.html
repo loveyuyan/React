@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>复合组件</title>
+    <script src="./build/react.js" charset="utf-8"></script>
+    <script src="./build/react-dom.js" charset="utf-8"></script>
+    <script src="./js/browser.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+    <div id="container2">
+
+    </div>
+    <!-- babel是一个转换编译器 -->
+    <script type="text/babel">
+      var Helloyuyan=React.createClass({
+        render: function () {
+          return (
+            <h4>Hello {this.props.name}!</h4>
+          );
+        }
+      });
+      ReactDOM.render(
+        <Helloyuyan name="yuyan"/>,
+        document.getElementById('container')
+      );
+      var WebName=React.createClass({
+        render: function () {
+          return (
+            <h4>{this.props.webname}</h4>
+          );
+        }
+      });
+      var WebLink=React.createClass({
+        render: function () {
+          return (
+            <a href={this.props.weblink}>{this.props.weblink}</a>
+          );
+        }
+      });
+      var WebSite=React.createClass({
+        render: function () {
+          return (
+            <div>
+              <WebName webname={this.props.wname}/>
+              <WebLink weblink={this.props.wlink}/>
+            </div>
+          );
+        }
+      });
+      ReactDOM.render(
+        <WebSite wname="必应" wlink="http://cn.bing.com"/>,
+        document.getElementById('container2')
+      );
+    </script>
+  </body>
+</html>

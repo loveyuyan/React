@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>...this.props和this.props.children和propTypes</title>
+    <script src="./build/react.js" charset="utf-8"></script>
+    <script src="./build/react-dom.js" charset="utf-8"></script>
+    <script src="./js/browser.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+    <div id="container2">
+
+    </div>
+    <div id="container3">
+
+    </div>
+    <!-- babel是一个转换编译器 -->
+    <script type="text/babel">
+    // ...this.props
+      var Link=React.createClass({
+        render: function () {
+          return (
+            <a {...this.props}>{this.props.name}</a>
+          );
+        }
+      });
+      ReactDOM.render(
+        <Link href="http://cn.bing.com" name="必应"/>,
+        document.getElementById('container')
+      );
+    //this.props.children
+      var ListComponent=React.createClass({
+        render: function () {
+          return (
+            <ul>
+              {
+                //使用React.Children.map方法，返回值是个数组对象
+                React.Children.map(this.props.children,function(child){
+                  return <li>{child}</li>
+                })
+              }
+            </ul>
+          );
+        }
+      });
+      ReactDOM.render(
+        <ListComponent>
+          <h4>必应</h4>
+          <a href="http://cn.bing.com">http://cn.bing.com</a>
+        </ListComponent>,
+        document.getElementById('container2')
+      );
+    //propTypes
+      var ShowTitle=React.createClass({
+        propTypes: {
+          title: React.PropTypes.string.isRequired
+        },
+        render: function () {
+          return <h4>{this.props.title}</h4>
+        }
+      });
+      ReactDOM.render(
+        <ShowTitle title="123"/>,
+        document.getElementById('container3')
+      );
+    </script>
+  </body>
+</html>

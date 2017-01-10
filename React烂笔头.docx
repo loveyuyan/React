@@ -1,0 +1,55 @@
+React特性
+    1.声明式设计 − React采用声明范式，可以轻松描述应用。
+    2.高效 − React通过对DOM的模拟，最大限度地减少与DOM的交互。
+    3.灵活 − React可以与已知的库或框架很好地配合。
+    4.JSX − JSX 是 JavaScript 语法的扩展。
+    5.组件 − 通过React构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。
+    6.单向响应的数据流 − React实现了单向响应的数据流，从而减少了重复代码。
+JSX
+    1.使用JSX语法，需设置type：text/babel
+    2.JSX添加自定义属性需要使用data-前缀
+    3.JSX的表达式写在{}中，没有if else语句，可以使用三目运算符来代替
+    4.React推荐使用CSS内联样式
+      在React中设置样式的书写格式为：
+      ·以，结尾；
+      ·key的名字中不能出现-，需使用驼峰命名法；
+      ·value为字符串时，需要加引号，为数字时，不需要加单位
+    5.JSX的注释需写在{}中
+    6.要渲染HTML标签，只需在JSX里使用小写字母的标签名；要渲染React组件，只需创建一个大写字母开头驼峰法命名的本地变量
+    7.React DOM使用className和htmlFor来替代class和for，因为class和for都是React的保留字
+React组件类
+    1.React中创建的组件类以大写字母开头，驼峰法命名
+    2.使用React.createClass方法创建一个组件类
+    3.每个组件类必须实现自己的render方法，输出定义好的组件模板
+    4.组件类只能包含一个顶层标签
+props
+    1.props是组件自身的属性，一般用于嵌套的内外层组件中，负责传递信息（通常是父层组件向子层组件传递）
+    2.在React组件中...this.props可以将父组件中的全部属性都复制给子组件
+    3.this.props.children表示组件的所有子节点,应用于列表组件中
+    4.propTypes用于验证组件实例的属性是否符合要求
+    5.通过getDefaultProps方法来对属性设置默认值
+事件处理
+    1.React中的事件名称，小写字母开头，驼峰命名法
+    2.当state发生变化时会调用组件内部的render方法
+生命周期
+    1.组件的生命周期被分为三个状态：
+    ·Mounting：已插入真实 DOM
+    ·Updating：正在被重新渲染
+    ·Unmounting：已移出真实 DOM
+    2.组件的生命周期可分为四个阶段：
+    创建、实例化、更新、销毁
+    3.Mounting/组件挂载
+    ·componentWillMount：组件将要挂载。在render之前执行，但仅执行一次，即使多次重复渲染该组件或者改变了组件的state
+    ·componentDidMount：组件已经挂载。在render之后执行，同一组件重复渲染只执行一次
+    4.Updating/组件更新
+    ·componentWillReceiveProps(object nextProps)
+    组件收到新的props之前被调用，在初始化render时不会被调用
+    ·shouldComponentUpdate(object nextProps,object nextState)
+    返回一个布尔值，判断是否需要重新渲染。在组件接收到新的props或者state时被调用。可以在你确认不需要更新组件时使用
+    ·componentWillUpdate
+    组件将要更新
+    ·componentDidUpdate
+    组件已经更新
+    5.Unmounting/组件移除
+    ·componentWillUnmount
+    在组件从DOM中移除时被调用

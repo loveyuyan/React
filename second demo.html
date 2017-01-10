@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>设置样式的三种方式</title>
+    <script src="./build/react.js" charset="utf-8"></script>
+    <script src="./build/react-dom.js" charset="utf-8"></script>
+    <script src="./js/browser.min.js" charset="utf-8"></script>
+    <style>
+      .pStyle{background-color: "rgb(91, 227, 246)";}
+    </style>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+    <!-- babel是一个转换编译器 -->
+    <script type="text/babel">
+      var hStyle={
+        backgroundColor:"rgb(60, 227, 40)",
+        color:"rgb(240, 13, 13)"
+      }
+      var ShowMessage=React.createClass({
+        // 设置属性的默认值
+        getDefaultProps: function (){
+          return {
+            secondRow:"yuyan"
+          };
+        },
+        render: function () {
+          return (
+              <div style={{backgroundColor:"rgb(232, 170, 26)",borderWidth:5,borderColor:"rgb(0, 0, 0)",borderStyle:"solid"}}>
+                <h1 style={hStyle}>{this.props.firstRow}</h1>
+                <p className="pStyle">{this.props.secondRow}</p>
+              </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <ShowMessage firstRow="你好"/>,
+        document.getElementById('container')
+      );
+    </script>
+  </body>
+</html>
